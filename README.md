@@ -18,6 +18,11 @@ I generally use visual studio :
 - you can click run on the top and enter Run without debugging that will automatically pick the main file PharmancyLocationIndentifierApplication.java
 - or you go to "Maven" section of bottom left > right click on the project > custom > spring-boot:run
 
+For IntelliJ ide:
+- After cloning project.
+- File > New > Project from existing resources > select the project
+- Go to main file PharmancyLocationIndentifierApplication.java > right click on the file > select Run PharmancyLocationIndentifierApplication.java file.
+
 - the app will run on 8080 port.
 
 - Once the app is running on 8080 port :
