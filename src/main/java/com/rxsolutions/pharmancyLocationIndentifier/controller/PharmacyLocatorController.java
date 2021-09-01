@@ -12,6 +12,11 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+
+/**
+ * Controller class to handle API requests.
+ * Author : Lakshman Jamili
+ */
 @Controller
 public class PharmacyLocatorController {
 
@@ -39,7 +44,7 @@ public class PharmacyLocatorController {
         try {
 
             // get the pharmacy locator response after calculating the shortest distance.
-            pharmacyLocatorResponse = pharmacyLocatorService.findPharmacyLocatorService(inputLatitude, inputLongitude);
+            pharmacyLocatorResponse = pharmacyLocatorService.findNearestPharmacyLocation(inputLatitude, inputLongitude);
 
         }
 

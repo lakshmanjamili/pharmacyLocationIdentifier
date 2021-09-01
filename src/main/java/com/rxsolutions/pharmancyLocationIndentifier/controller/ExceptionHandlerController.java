@@ -20,7 +20,7 @@ public class ExceptionHandlerController {
 
         return new ResponseEntity<>(
                 "Required parameters are missing, to calculate distance input parameters are required",
-                HttpStatus.INTERNAL_SERVER_ERROR);
+                HttpStatus.BAD_REQUEST);
 
     }
 

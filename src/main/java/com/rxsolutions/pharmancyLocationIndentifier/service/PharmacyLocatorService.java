@@ -8,6 +8,8 @@ import java.util.List;
 import com.rxsolutions.pharmancyLocationIndentifier.model.PharmacyLocatorRequest;
 import com.rxsolutions.pharmancyLocationIndentifier.model.PharmacyLocatorResponse;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -17,6 +19,8 @@ import org.springframework.stereotype.Service;
  */
 @Service
 public class PharmacyLocatorService {
+
+    private static final Logger LOGGER = LoggerFactory.getLogger(PharmacyLocatorService.class);
 
     // Autowire CsvLoaderService to get intance of the csv file loaded when needed.
     @Autowired
@@ -34,7 +38,7 @@ public class PharmacyLocatorService {
      * @return
      */
 
-    public PharmacyLocatorResponse findPharmacyLocatorService(double inputLatitude, double inputLongitude)
+    public PharmacyLocatorResponse findNearestPharmacyLocation(double inputLatitude, double inputLongitude)
 
     {
 
@@ -72,6 +76,9 @@ public class PharmacyLocatorService {
         PharmacyLocatorResponse pharmacyLocatorResponse = Collections.min(pharmacyLocatorResponseList,
                 Comparator.comparing(pharmacy -> pharmacy.getTotalDistance()));
 
+        LOGGER.info("Nearest pharmacy for given input lat and long :" + pharmacyLocatorResponse.getName()
+                + " and distance: " + pharmacyLocatorResponse.getTotalDistance());
+
         return pharmacyLocatorResponse;
 
     }
@@ -81,7 +88,7 @@ public class PharmacyLocatorService {
      * user provided latitude and longitude. We areusing Haversine Formula to
      * achieve this assuminig Earth to be sphere share.
      * 
-     * Harversine Formula
+     * Haversine Formula:
      * 
      * (d/r) = sin^2(lat2-lat1/2) + cos(lat1) * cos (lat2) * sin^2(lon2-long1/2) -->
      * d = 2 * r * asin (sqrt(a))
