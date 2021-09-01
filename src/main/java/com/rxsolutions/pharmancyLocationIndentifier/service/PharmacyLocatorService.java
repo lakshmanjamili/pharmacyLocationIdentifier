@@ -43,7 +43,6 @@ public class PharmacyLocatorService {
     {
 
         // Get all pharmacies from CSV file.
-
         List<PharmacyLocatorRequest> pharmacyListFromCSV = csvLoaderService.getPharmacyLocatorRequestList();
 
         List<PharmacyLocatorResponse> pharmacyLocatorResponseList = new ArrayList<>();
@@ -84,10 +83,8 @@ public class PharmacyLocatorService {
     }
 
     /*
-     * Calculate the distance based on the Pharmacy latitude and longitude and input
-     * user provided latitude and longitude. We areusing Haversine Formula to
-     * achieve this assuminig Earth to be sphere share.
-     * 
+     * Calculate the distance based on the Pharmacy latitude and longitude and user
+     * provided input latitude and longitude. We are using Haversine Formula
      * Haversine Formula:
      * 
      * (d/r) = sin^2(lat2-lat1/2) + cos(lat1) * cos (lat2) * sin^2(lon2-long1/2) -->
@@ -119,7 +116,6 @@ public class PharmacyLocatorService {
 
             // lets compute (d/r) = sin2(lat2-lat1/2) + cos(lat1) * cos (lat2) *
             // sin2(lon2-long1/2) --> a
-
             double distanceByR = Math.sin(distanceInLat / 2) * Math.sin(distanceInLat / 2)
                     + Math.cos(Math.toRadians(inputLatitude)) * Math.cos(Math.toRadians(pharmacyLatitude))
                             * Math.sin(distanceInLong / 2) * Math.sin(distanceInLong / 2);
@@ -128,10 +124,7 @@ public class PharmacyLocatorService {
             double radiusOfEarth = 6371;
 
             // r = radius of earth.
-            // d = 2 Math.asin(sqrt(a)) * r
-            // double c = 2 * Math.atan2(Math.sqrt(distanceByR), Math.sqrt(1 -
-            // distanceByR));
-
+            // now calculate: d = 2 Math.asin(sqrt(a)) * r
             double c = 2 * Math.asin(Math.sqrt(distanceByR));
 
             double distanceInKm = radiusOfEarth * c;

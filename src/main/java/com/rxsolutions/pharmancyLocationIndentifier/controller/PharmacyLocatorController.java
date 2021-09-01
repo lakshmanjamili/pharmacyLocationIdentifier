@@ -12,10 +12,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-
 /**
- * Controller class to handle API requests.
- * Author : Lakshman Jamili
+ * Controller class to handle Nearest Pharamcy API requests. Author : Lakshman
+ * Jamili
  */
 @Controller
 public class PharmacyLocatorController {
@@ -37,7 +36,7 @@ public class PharmacyLocatorController {
             @RequestParam(value = "latitude", required = true) Double inputLatitude,
             @RequestParam(value = "longitude", required = true) Double inputLongitude) {
 
-        LOGGER.info("Request recieved to pharmacylocation api latitude : " + inputLatitude + " and longitude :"
+        LOGGER.info("Request recieved to pharmacy location api latitude : " + inputLatitude + " and longitude :"
                 + inputLongitude);
 
         PharmacyLocatorResponse pharmacyLocatorResponse = null;
@@ -53,7 +52,7 @@ public class PharmacyLocatorController {
         {
 
             // if there is an exception , we will respond with internal server error.
-            LOGGER.error("Error while calculating latitude : " + inputLatitude + "longitude :" + inputLongitude);
+            LOGGER.error("Error while calculating latitude : " + inputLatitude + " longitude :" + inputLongitude);
             return new ResponseEntity<>(pharmacyLocatorResponse, HttpStatus.INTERNAL_SERVER_ERROR);
 
         }

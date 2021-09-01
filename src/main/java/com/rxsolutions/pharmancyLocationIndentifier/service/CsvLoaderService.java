@@ -44,8 +44,8 @@ public class CsvLoaderService {
 
     /**
      * Loadcsvfile will be loaded during the time of bootstrap and populate
-     * setPharmacyLocatorRequestList() with the values. Using postContruct will be
-     * called after dependency injection is completed and loads the method.
+     * setPharmacyLocatorRequestList() with the values, that we dont need to read
+     * CSV file for every user call.
      */
     @PostConstruct
     public void loadCsvFile() {
