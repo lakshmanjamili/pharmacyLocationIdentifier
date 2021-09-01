@@ -53,27 +53,28 @@ Detailed Design to identify nearest pharmacy for user:
 * Return result back to the caller.
 * The result consits of name of the pharmacy, address (total combined address : address + city + state + zip), total distance.
 
-     sample output if called the api with parameteres as below:
-      http://localhost:8080/nearestpharmacylocation?latitude=38.852390&&longitude=-94.722740
+sample output if called the api with parameteres as below:
+http://localhost:8080/nearestpharmacylocation?latitude=38.852390&&longitude=-94.722740
 
-      response:
-      {
+response:
+{
      "name": "CVS PHARMACY",
      "address": "5001 WEST 135 ST LEAWOOD KS 66224",
      "totalDistance": 4.685008883444089
-      }
+}
 
-      * Junit test cases are written under test folder for controller and service classes.
-      * ExceptionHandlerController is added to handle  unexcepted exceptions.
-      example : if user does not provide request params
-    http://localhost:8080/nearestpharmacylocation?
+* Junit test cases are written under test folder for controller and service classes.
+* ExceptionHandlerController is added to handle  unexcepted exceptions.
+example : if user does not provide request params
+http://localhost:8080/nearestpharmacylocation?
 
-    response :
-    Required parameters are missing, to calculate distance input parameters are required
+response :
+Required parameters are missing, to calculate distance input parameters are required
 
-    Additional resources used :
-    https://www.geodatasource.com/distance-calculator
-    i've used to test and validate calculated distance between origin latitude, longitude and destination latitude, longitude.
-    Haversine formula : Learnt and understood about the formula
-    https://en.wikipedia.org/wiki/Haversine_formula
+Additional resources used :
+https://www.geodatasource.com/distance-calculator
+i've used to test and validate calculated distance between origin latitude, longitude and destination latitude, longitude.
+
+Haversine formula : Learnt and understood about the formula
+https://en.wikipedia.org/wiki/Haversine_formula
 
