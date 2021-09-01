@@ -1,4 +1,4 @@
-# pharmacyLocationIdentifier
+# Nearest Pharmacy Location Identifier
 
 Return shortest distance of the pharmacy based on user provided latitude and longitude.
 
@@ -57,6 +57,7 @@ sample output if called the api with parameteres as below:
 http://localhost:8080/nearestpharmacylocation?latitude=38.852390&&longitude=-94.722740
 
 response:
+
 {
      "name": "CVS PHARMACY",
      "address": "5001 WEST 135 ST LEAWOOD KS 66224",
