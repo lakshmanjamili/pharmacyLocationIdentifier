@@ -46,12 +46,12 @@ Design of project :
 
 Detailed Design to identify nearest pharmacy for user:
 
-     * Get the input pharmacy details list from CSV file. (Handled in CsvLoaderService).
-     * For each Pharmacy item in the list calculate the distance in Miles using Harvesine formula.
-     * Once we get all pharmacies with total distatnce's calculated.
-     * Find the Pharmacy with minimum distance from list using util Comporator on distance.
-     * Return result back to the caller.
-     * The result consits of name of the pharmacy, address (total combined address : address + city + state + zip), total distance.
+* Get the input pharmacy details list from CSV file. (Handled in CsvLoaderService).
+* For each Pharmacy item in the list calculate the distance in Miles using Harvesine formula.
+* Once we get all pharmacies with total distatnce's calculated.
+* Find the Pharmacy with minimum distance from list using util Comporator on distance.
+* Return result back to the caller.
+* The result consits of name of the pharmacy, address (total combined address : address + city + state + zip), total distance.
 
      sample output if called the api with parameteres as below:
       http://localhost:8080/nearestpharmacylocation?latitude=38.852390&&longitude=-94.722740
