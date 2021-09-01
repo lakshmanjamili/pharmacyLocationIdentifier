@@ -27,11 +27,11 @@ public class PharmacyLocatorService {
     CsvLoaderService csvLoaderService;
 
     /**
-     * 1. Get the input pharmacy details list from CSV file. (Handled in
-     * CsvLoaderService). 2. For each Pharmacy item in the list calculate the
-     * distance in Miles using Harvesine formula. 3. Once we get all pharmacies with
-     * distatnce 4. Find the Pharmacy with minimum distance from list using util
-     * Comporator on distance. 5. Return result back to the controller.
+     * 1. Get the input pharmacy details list from CSV file. (Handled in CsvLoaderService).
+     * 2. For each Pharmacy item in the list calculate the distance in Miles using Harvesine formula. 
+     * 3. Once we get all pharmacies with total distatnce's calculated.
+     * 4. Find the Pharmacy with minimum distance from list using util Comporator on distance.
+     * 5. Return result back to the caller.
      * 
      * @param inputLatitude
      * @param inputLongitude
