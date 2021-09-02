@@ -53,7 +53,7 @@ public class PharmacyLocatorController {
 
             // if there is an exception , we will respond with internal server error.
             LOGGER.error("Error while calculating latitude : " + inputLatitude + " longitude :" + inputLongitude);
-            return new ResponseEntity<>(pharmacyLocatorResponse, HttpStatus.INTERNAL_SERVER_ERROR);
+                return new ResponseEntity<>(new PharmacyLocatorResponse(), HttpStatus.INTERNAL_SERVER_ERROR);
 
         }
 

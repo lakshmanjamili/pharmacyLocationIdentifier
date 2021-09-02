@@ -50,24 +50,32 @@ public class PharmacyLocatorService {
         for (PharmacyLocatorRequest pharmacy : pharmacyListFromCSV)
 
         {
+                if (pharmacy != null)
 
-            // For each PharmacyResponse calculate name, total address, distance,
-            PharmacyLocatorResponse pharmacyLocatorResponse = new PharmacyLocatorResponse();
-            pharmacyLocatorResponse
-                    .setName(pharmacy.getName() != null ? pharmacy.getName().trim() : pharmacy.getName());
+                {
+                        // For each PharmacyResponse calculate name, total address, distance,
+                        PharmacyLocatorResponse pharmacyLocatorResponse = new PharmacyLocatorResponse();
+                        pharmacyLocatorResponse.setName(
+                                        pharmacy.getName() != null ? pharmacy.getName().trim() : pharmacy.getName());
 
-            // total address is a combincation of address, city, statet and zipcode.
-            pharmacyLocatorResponse.setAddress(pharmacyLocatorResponse.getCompleteAddress(
-                    pharmacy.getAddress() != null ? pharmacy.getAddress().trim() : "",
-                    pharmacy.getCity() != null ? pharmacy.getCity().trim() : "",
-                    pharmacy.getState() != null ? pharmacy.getState().trim() : "", String.valueOf(pharmacy.getZip())));
+                        // total address is a combincation of address, city, statet and zipcode.
+                        pharmacyLocatorResponse.setAddress(pharmacyLocatorResponse.getCompleteAddress(
+                                        pharmacy.getAddress() != null ? pharmacy.getAddress().trim() : "",
+                                        pharmacy.getCity() != null ? pharmacy.getCity().trim() : "",
+                                        pharmacy.getState() != null ? pharmacy.getState().trim() : "",
+                                        String.valueOf(pharmacy.getZip())));
 
-            // distance in miles is calculated between pharmacy lat, long and user provided
-            // latitude and longitude.
-            pharmacyLocatorResponse.setTotalDistance(calculatePharmacyDistanceInMiles(pharmacy.getLatitude(),
-                    pharmacy.getLongitude(), inputLatitude, inputLongitude));
+                        // distance in miles is calculated between pharmacy lat, long and user provided
+                        // latitude and longitude.
+                        pharmacyLocatorResponse
+                                        .setTotalDistance(calculatePharmacyDistanceInMiles(pharmacy.getLatitude(),
+                                                        pharmacy.getLongitude(), inputLatitude, inputLongitude));
 
-            pharmacyLocatorResponseList.add(pharmacyLocatorResponse);
+                        LOGGER.info("Pharmacy name : " + pharmacyLocatorResponse.getName()
+                                                        + " and calculated distance: " + pharmacyLocatorResponse.getTotalDistance());                                
+
+                        pharmacyLocatorResponseList.add(pharmacyLocatorResponse);
+                }
         }
 
         // once we get all calculated distances then we take the pharmacy with min
@@ -75,7 +83,7 @@ public class PharmacyLocatorService {
         PharmacyLocatorResponse pharmacyLocatorResponse = Collections.min(pharmacyLocatorResponseList,
                 Comparator.comparing(pharmacy -> pharmacy.getTotalDistance()));
 
-        LOGGER.info("Nearest pharmacy for given input lat and long :" + pharmacyLocatorResponse.getName()
+        LOGGER.info("Nearest pharmacy for given input lat and long : " + pharmacyLocatorResponse.getName()
                 + " and distance: " + pharmacyLocatorResponse.getTotalDistance());
 
         return pharmacyLocatorResponse;

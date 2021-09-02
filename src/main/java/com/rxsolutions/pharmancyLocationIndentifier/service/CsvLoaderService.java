@@ -57,6 +57,9 @@ public class CsvLoaderService {
             LOGGER.info("Reading pharmacies csv file");
             // reading the file using Open csv dependency.
             setPharmacyLocatorRequestList(readCsvFile(resource.getInputStream()));
+            
+            LOGGER.info("finished reading pharmacies csv file");
+
 
         }
 
