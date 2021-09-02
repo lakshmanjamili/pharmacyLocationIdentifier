@@ -121,4 +121,24 @@ public class PharmacyLocatorServiceTest {
 
     }
 
+
+     /**
+     * Testing the service when csv loaded to the list is empty.
+     */
+    @Test
+    public void testFindNearestPharmacyLocationWhenCSVIsEmpty()
+
+    {
+
+        List<PharmacyLocatorRequest> pharmacyListFromCSV = new ArrayList<>();
+        when(csvLoaderService.getPharmacyLocatorRequestList()).thenReturn(pharmacyListFromCSV);
+
+        PharmacyLocatorResponse pharmacyLocatorResponse = pharmacyLocatorService.findNearestPharmacyLocation(38.852390,
+                -94.722740);
+        assertEquals(pharmacyLocatorResponse.getTotalDistance(), 0.0);
+        assertEquals(pharmacyLocatorResponse.getName(), null);
+        assertEquals(pharmacyLocatorResponse.getAddress(), null);
+
+    }
+
 }

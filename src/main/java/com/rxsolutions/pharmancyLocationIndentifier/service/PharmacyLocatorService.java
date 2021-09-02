@@ -77,14 +77,24 @@ public class PharmacyLocatorService {
                         pharmacyLocatorResponseList.add(pharmacyLocatorResponse);
                 }
         }
+         
+        PharmacyLocatorResponse pharmacyLocatorResponse = null;
+        // added this condition in a view if CSV did not load any pharmacies 
+        // if pharmacyLocatorResponseList empty then we return empty as dont have any data to compare with.
+        if (pharmacyLocatorResponseList.isEmpty()) {
+                pharmacyLocatorResponse = new PharmacyLocatorResponse();
+                LOGGER.info("Pharmacy list loaded from CSV is empty. Please try again later.");
+        }
 
-        // once we get all calculated distances then we take the pharmacy with min
-        // distance which will be our result PharmacyLocatorResponse object
-        PharmacyLocatorResponse pharmacyLocatorResponse = Collections.min(pharmacyLocatorResponseList,
-                Comparator.comparing(pharmacy -> pharmacy.getTotalDistance()));
+        else {
+                // once we get all calculated distances then we take the pharmacy with min
+                // distance which will be our result PharmacyLocatorResponse object
+                pharmacyLocatorResponse = Collections.min(pharmacyLocatorResponseList,
+                                Comparator.comparing(pharmacy -> pharmacy.getTotalDistance()));
 
-        LOGGER.info("Nearest pharmacy for given input lat and long : " + pharmacyLocatorResponse.getName()
-                + " and distance: " + pharmacyLocatorResponse.getTotalDistance());
+                LOGGER.info("Nearest pharmacy for given input lat and long : " + pharmacyLocatorResponse.getName()
+                                + " and distance: " + pharmacyLocatorResponse.getTotalDistance());
+        }
 
         return pharmacyLocatorResponse;
 
