@@ -26,7 +26,7 @@ public class PharmacyLocatorController {
     PharmacyLocatorService pharmacyLocatorService;
 
     /**
-     * 
+     * Get the nearest pharmacy location API.
      * @param latitude
      * @param latitude
      * @return
